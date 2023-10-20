@@ -122,24 +122,13 @@
                 .replace("[whose]", whose[Math.floor(Math.random() * whose.length)]);
 
             // Condition pour la couleur multicolore
-            if (chapterNumber % 10 === 0) {
-                text += `<span style="color: ${getRandomColor()}">${replacedText}</span> `;
-            } else {
-                text += replacedText + " ";
-            }
+          
         }
 
         return text;
     }
 
-    function getRandomColor() {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
+   
 </script>
 </body>
 </html>
