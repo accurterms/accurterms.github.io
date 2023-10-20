@@ -74,61 +74,165 @@
         <h1>⊳ Terms of Service by @AccurTerms ⊲</h1>
     </div>
     <div id="terms-content"></div>
-    <a id="youtube-button" href="https://www.youtube.com/watch?v=ipSqka9OD1Y&pp=ygUMZmluYWxseSBtZW1l" target="_blank">✨ Prize</a>
+    <button id="prize-button">Prize</button>
+    <div id="image-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(101, 98, 98, 0.8); padding: 20px; border-radius: 10px;">
+        <!-- L'emplacement de l'image sélectionnée -->
+        <img id="popup-image" src="" alt="Random Image" style="max-width: 100%; max-height: 100%; display: block; margin: 0 auto;" class="small-image">
+    </div>
 
-  
-   <script>
-    const termsContent = document.getElementById("terms-content");
-    const totalCharacters = 99999;
-    const chapters = 3000;
-    const charactersPerChapter = totalCharacters / chapters;
+    <script>
+        const termsContent = document.getElementById("terms-content");
+        const totalCharacters = 9999;
+        const chapters = 300;
+        const charactersPerChapter = totalCharacters / chapters;
 
-    const words = ["apple", "banana", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jazz", "kangaroo", "lemon", "mountain", "noodle", "ocean", "penguin", "quilt", "rabbit", "sunshine", "tiger", "umbrella", "violin", "waterfall", "xylophone", "zebra", "airplane", "butterfly", "carrot", "dolphin", "elephant", "fox", "giraffe", "hamburger", "igloo", "jellyfish", "koala", "lighthouse", "moon", "narwhal", "octopus", "panda", "quokka", "raccoon", "squirrel", "turtle", "unicorn", "volcano", "whale", "xylophone", "yacht", "zeppelin", "ant", "bark", "chocolate", "daisy", "eagle", "firefly", "grape", "hamster", "iguana", "jacket", "kiwi", "leopard", "mango", "nightingale", "owl", "piano", "quail", "rhinoceros", "snake", "toucan", "umbrella", "vulture", "walrus", "xylophone", "yak", "zebra", "apricot", "blueberry", "cactus", "dandelion", "eucalyptus", "flamingo", "grapefruit", "hedgehog", "iris", "jackal", "kiwi", "lemur", "magnolia", "nightshade", "otter", "palm", "quince", "rose", "starfish", "tulip", "urchin", "violet", "wisteria", "xenon", "yam", "zeppelin"];
-    const actions = ["abandon", "accept", "achieve", "acknowledge", "act", "adapt", "add", "address", "adjust", "admire", "advise", "affirm", "agitate", "align", "allow", "announce", "apologize", "appreciate", "approve", "arrange", "ascend", "ask", "assemble", "assess", "assign", "assume", "attempt", "attract", "bake", "balance", "behave", "believe", "breathe", "build", "calculate", "carry", "celebrate", "change", "choose", "claim", "clarify", "classify", "clean", "communicate", "compare", "compete", "complain", "complete", "concentrate", "condemn", "confess", "connect", "consider", "construct", "control", "cooperate", "create", "criticize", "dance", "decide", "decorate", "defend", "delay", "deliver", "demonstrate", "depend", "describe", "design", "destroy", "detect", "develop", "disagree", "disappear", "discover", "discuss", "distribute", "dive", "dream", "earn", "encourage", "end", "enjoy", "enter", "establish", "estimate", "evaluate", "examine", "exchange", "exist", "expand", "experience", "explain", "explore", "express", "extend", "face", "fail", "fear", "feed", "feel", "fight", "find", "finish", "fix", "focus", "follow", "forgive", "form", "fulfill", "gather", "generate", "give", "glow", "grasp", "grow", "handle", "happen", "hear", "help", "hide", "hinder", "hold", "identify", "imagine", "improve", "include", "influence", "inform", "initiate", "inquire", "insist", "inspire", "invent", "investigate", "invite", "join", "judge", "jump", "justify", "keep", "kiss", "knock", "know", "laugh", "learn", "leave", "lift", "listen", "live", "love", "maintain", "manage", "manifest", "march", "matter", "measure", "mediate", "meet", "mend", "mention", "merge", "mind", "miss", "mix", "motivate", "move", "negotiate", "notice", "nurture", "obey", "observe", "obtain", "operate", "organize", "overcome", "own", "participate", "pass", "pay", "perform", "plan", "play", "possess", "prepare", "present", "prevent", "produce", "progress", "promise", "protect", "provide", "pursue", "question", "reach", "realize", "receive", "recognize", "record", "reduce", "reflect", "refuse", "regulate", "rejoice", "relate", "release", "remember", "remove", "repair", "replace", "request", "resolve", "respond", "restore", "retrieve", "reveal", "rid", "run", "satisfy", "save", "say", "see", "seek", "select", "sell", "serve", "settle", "share", "shine", "show", "sing", "sit", "sleep", "smile", "solve", "speak", "start", "stay", "stimulate", "stop", "strive", "study", "submit", "succeed", "suffer", "suggest", "support", "surprise", "survive", "talk", "teach", "tell", "test", "think", "touch", "train", "transform", "translate", "travel", "treat", "trust", "understand", "unite", "use", "value", "visit", "wait", "walk", "watch", "welcome", "win", "work", "worry", "write"];
-    const persons = ["I", "You", "He", "She", "It", "We", "They"];
-    const whose = ["My", "Your", "His", "Her", "Our", "Their"];
+        function showImagePopup() {
+            const popup = document.getElementById("image-popup");
+            const popupImage = document.getElementById("popup-image");
 
-    let termsText = "";
+               const imageUrls = [
+                "https://media.discordapp.net/attachments/1159460239926640681/1165026487641047120/kIsLdx1.png?ex=65455a77&is=6532e577&hm=00322f9291773ab2885becb74ed7c5dd0ee6d90b38d68217551447fa75300b3f&=&width=800&height=200",
+                "https://media.discordapp.net/attachments/1159460239926640681/1165023554576850955/HHXhcEp.png?ex=654557bc&is=6532e2bc&hm=bee996906239342039f9993dfafd9b3bd14a64d9b9ccd97e26af26001fd8ea9b&=&width=800&height=200"
+               ]
 
-    for (let i = 1; i <= chapters; i++) {
-        const chapterTitle = `Chapter ${i}`;
-        const chapterContent = generateRandomText(charactersPerChapter, words, actions, persons, whose, i);
-        termsText += `<h2>${chapterTitle}</h2>`;
-        termsText += `<p>${chapterContent}</p>`;
-    }
 
-    termsContent.innerHTML = termsText;
+         
+            const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
 
-    function generateRandomText(charCount, words, actions, persons, whose, chapterNumber) {
-        let text = 'You agree to the following: ';
+            // Chargez l'image sélectionnée
+            popupImage.src = randomImageUrl;
 
-        for (let i = 0; i < charCount; i++) {
-            // Phrases modèles
-            const templatePhrases = [
-                "[Person] will [action] [whose] [word],",
-                "You will [action] [whose] [word],",
-                "[Person] have a [word],",
-                "[Person] [action] this,"
-            ];
+            // Positionnez la popup à un endroit aléatoire sur la page
+            const pageWidth = window.innerWidth;
+            const pageHeight = window.innerHeight;
+            const popupWidth = popup.clientWidth;
+            const popupHeight = popup.clientHeight;
 
-            // Sélection aléatoire d'une phrase modèle
-            const randomTemplate = templatePhrases[Math.floor(Math.random() * templatePhrases.length)];
+            const randomLeft = Math.floor(Math.random() * (pageWidth - popupWidth));
+            const randomTop = Math.floor(Math.random() * (pageHeight - popupHeight));
 
-            // Remplacement des espaces réservés par des éléments aléatoires de vos listes
-            const replacedText = randomTemplate
-                .replace("[Person]", persons[Math.floor(Math.random() * persons.length)])
-                .replace("[action]", actions[Math.floor(Math.random() * actions.length)])
-                .replace("[word]", words[Math.floor(Math.random() * words.length)])
-                .replace("[whose]", whose[Math.floor(Math.random() * whose.length)]);
+            popup.style.left = randomLeft + "px";
+            popup.style.top = randomTop + "px";
 
-            // Condition pour la couleur multicolore
-          
+            // Affichez la popup
+            popup.style.display = "block";
+
+            // Attendez qu'un clic soit effectué sur l'image pour la fermer
+            popupImage.onclick = function() {
+                popup.style.display = "none";
+            };
         }
 
-        return text;
-    }
+        // Affichez la popup d'image à un emplacement aléatoire toutes les 5 secondes
+        setInterval(showImagePopup, 5000);
 
-   
-</script>
+
+       
+        const words = ["apple", "banana", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jazz", "kangaroo", "lemon", "mountain", "noodle", "ocean", "penguin", "quilt", "rabbit", "sunshine", "tiger", "umbrella", "violin", "waterfall", "xylophone", "zebra", "airplane", "butterfly", "carrot", "dolphin", "elephant", "fox", "giraffe", "hamburger", "igloo", "jellyfish", "koala", "lighthouse", "moon", "narwhal", "octopus", "panda", "quokka", "raccoon", "squirrel", "turtle", "unicorn", "volcano", "whale", "xylophone", "yacht", "zeppelin", "ant", "bark", "chocolate", "daisy", "eagle", "firefly", "grape", "hamster", "iguana", "jacket", "kiwi", "leopard", "mango", "nightingale", "owl", "piano", "quail", "rhinoceros", "snake", "toucan", "umbrella", "vulture", "walrus", "xylophone", "yak", "zebra", "apricot", "blueberry", "cactus", "dandelion", "eucalyptus", "flamingo", "grapefruit", "hedgehog", "iris", "jackal", "kiwi", "lemur", "magnolia", "nightshade", "otter", "palm", "quince", "rose", "starfish", "tulip", "urchin", "violet", "wisteria", "xenon", "yam", "zeppelin"];
+const actions = ["abandon", "accept", "achieve", "acknowledge", "act", "adapt", "add", "address", "adjust", "admire", "advise", "affirm", "agitate", "align", "allow", "announce", "apologize", "appreciate", "approve", "arrange", "ascend", "ask", "assemble", "assess", "assign", "assume", "attempt", "attract", "bake", "balance", "behave", "believe", "breathe", "build", "calculate", "carry", "celebrate", "change", "choose", "claim", "clarify", "classify", "clean", "communicate", "compare", "compete", "complain", "complete", "concentrate", "condemn", "confess", "connect", "consider", "construct", "control", "cooperate", "create", "criticize", "dance", "decide", "decorate", "defend", "delay", "deliver", "demonstrate", "depend", "describe", "design", "destroy", "detect", "develop", "disagree", "disappear", "discover", "discuss", "distribute", "dive", "dream", "earn", "encourage", "end", "enjoy", "enter", "establish", "estimate", "evaluate", "examine", "exchange", "exist", "expand", "experience", "explain", "explore", "express", "extend", "face", "fail", "fear", "feed", "feel", "fight", "find", "finish", "fix", "focus", "follow", "forgive", "form", "fulfill", "gather", "generate", "give", "glow", "grasp", "grow", "handle", "happen", "hear", "help", "hide", "hinder", "hold", "identify", "imagine", "improve", "include", "influence", "inform", "initiate", "inquire", "insist", "inspire", "invent", "investigate", "invite", "join", "judge", "jump", "justify", "keep", "kiss", "knock", "know", "laugh", "learn", "leave", "lift", "listen", "live", "love", "maintain", "manage", "manifest", "march", "matter", "measure", "mediate", "meet", "mend", "mention", "merge", "mind", "miss", "mix", "motivate", "move", "negotiate", "notice", "nurture", "obey", "observe", "obtain", "operate", "organize", "overcome", "own", "participate", "pass", "pay", "perform", "plan", "play", "possess", "prepare", "present", "prevent", "produce", "progress", "promise", "protect", "provide", "pursue", "question", "reach", "realize", "receive", "recognize", "record", "reduce", "reflect", "refuse", "regulate", "rejoice", "relate", "release", "remember", "remove", "repair", "replace", "request", "resolve", "respond", "restore", "retrieve", "reveal", "rid", "run", "satisfy", "save", "say", "see", "seek", "select", "sell", "serve", "settle", "share", "shine", "show", "sing", "sit", "sleep", "smile", "solve", "speak", "start", "stay", "stimulate", "stop", "strive", "study", "submit", "succeed", "suffer", "suggest", "support", "surprise", "survive", "talk", "teach", "tell", "test", "think", "touch", "train", "transform", "translate", "travel", "treat", "trust", "understand", "unite", "use", "value", "visit", "wait", "walk", "watch", "welcome", "win", "work", "worry", "write"];
+
+         const persons = ["I", "You", "He", "She", "It", "We", "They"];
+        const whose = ["My", "Your", "His", "Her", "Our", "Their"];
+    
+        let termsText = "";
+    
+        for (let i = 1; i <= chapters; i++) {
+    const chapterTitle = `Chapter ${i}`;
+    const chapterContent = generateRandomText(charactersPerChapter, words, actions, persons, whose);
+    termsText += `<h2>${chapterTitle}</h2>`;
+    termsText += `<p>${chapterContent}</p>`;
+    
+    // Ajoutez un interrupteur (checkbox) pour chaque chapitre
+    termsText += `<label class="switch-label">
+                <input type="checkbox">
+                <div class="switch">
+                    <div class="circle">
+                        <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <!-- ... (votre icône "cross") ... -->
+                        </svg>
+                        <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 24 24" y="0" x="0" height="10" width="10" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <!-- ... (votre icône "checkmark") ... -->
+                        </svg>
+                    </div>
+                </div>
+            </label>`;
+        }
+
+termsContent.innerHTML = termsText;
+    
+        function generateRandomText(charCount, words, actions, persons, whose) {
+            let text = 'You agree to the following: ';
+    
+            for (let i = 0; i < charCount; i++) {
+                // Phrases modèles
+                const templatePhrases = [
+                    "[Person] will [action] [whose] [word],",
+                    "You will [action] [whose] [word],",
+                    "[Person] have a [word],",
+                    "[Person] [action] this,"
+                ];
+    
+                // Sélection aléatoire d'une phrase modèle
+                const randomTemplate = templatePhrases[Math.floor(Math.random() * templatePhrases.length)];
+    
+                // Remplacement des espaces réservés par des éléments aléatoires de vos listes
+                const replacedText = randomTemplate
+                    .replace("[Person]", persons[Math.floor(Math.random() * persons.length)])
+                    .replace("[action]", actions[Math.floor(Math.random() * actions.length)])
+                    .replace("[word]", words[Math.floor(Math.random() * words.length)])
+                    .replace("[whose]", whose[Math.floor(Math.random() * whose.length)]);
+    
+                text += replacedText + " ";
+            }
+    
+            return text;
+        }
+
+          // Sélectionnez toutes les cases à cocher
+         // Sélectionnez toutes les cases à cocher
+         let startTime;
+        let endTime;
+        let checkedCount = 0;
+
+        // Sélectionnez toutes les cases à cocher
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const prizeButton = document.getElementById("prize-button");
+
+        // Ajoutez un gestionnaire d'événements pour chaque case à cocher
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', (event) => {
+                const chapterNumber = index + 1;
+                if (event.target.checked) {
+                    console.log(`Checkbox cochée dans le chapitre ${chapterNumber}`);
+                    checkedCount++;
+                } else {
+                    console.log(`Checkbox décochée dans le chapitre ${chapterNumber}`);
+                    checkedCount--;
+                }
+            });
+        });
+
+        // Gestionnaire d'événements pour le bouton "Prize"
+        prizeButton.addEventListener('click', () => {
+            if (checkedCount === chapters) {
+                endTime = new Date();
+                const timeElapsed = (endTime - startTime) / 1000; // en secondes
+                alert(`Félicitations ! Vous avez gagné.\nTemps pris : ${timeElapsed} secondes\nNombre de cases cochées : ${checkedCount}`);
+            } else {
+                const timeElapsed = (endTime - startTime) / 1000; // en secondes
+                const tryAgain = confirm('Vous n\'avez pas réussi. Voulez-vous réessayer ? ,' + "\nNombre de cases cochées :"+ ` ${checkedCount}`);
+                if (tryAgain) {
+                    location.reload(); // Recharge la page
+                }
+            }
+        });
+
+        // Commencez à mesurer le temps dès que la page est chargée
+        startTime = new Date();
+    </script>
+    
+    
+    
+    
 </body>
 </html>
