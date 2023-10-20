@@ -2,16 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Accurate Terms of  Services</title>
-<meta property="og:title" content="Accurates Tearms of Services">
-    <meta property="og:description" content="Accurate Terms of Services est un site qui vous fait souffrir en lisant des regles de 3000 chapitres.">
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1146854714470846626/1165005653601959987/Accurate_Terms_of_Services.png?ex=65454710&is=6532d210&hm=093a48182fafdc180232b7733da7bb3b861686e9056612492db3e57eaee33ef2&=">
-    <meta property="og:url" content="https://accurterms.github.io">
-
-  
-
-<link rel="icon" href="https://media.discordapp.net/attachments/1075581791777341490/1164994179563257947/-removebg-preview.png?ex=65453c60&is=6532c760&hm=149e565d83d8359404a81efa2e5789414810e108e62c271019216cf2308d1616&=" type="image/x-icon">
-
+    <title>✨ Long Terms of Service</title>
     <style>
         body {
             background-color: rgb(255, 255, 255);
@@ -67,6 +58,70 @@
             margin-bottom: 10px;
             text-decoration: none;
         }
+
+        /* Ajoutez ce style pour l'interrupteur (checkbox) */
+.switch-label {
+    display: inline-block;
+    margin-left: 10px; /* Ajustez la marge comme souhaité */
+}
+
+.switch-label .switch {
+    display: inline-block;
+    width: 30px; /* Ajustez la largeur comme souhaité */
+    height: 15px; /* Ajustez la hauteur comme souhaité */
+    position: relative;
+    cursor: pointer;
+}
+
+.switch-label .slider {
+    width: 100%;
+    height: 100%;
+    background: var(--switch-bg);
+    border-radius: 999px;
+    position: relative;
+    transition: var(--switch-transition);
+}
+
+.switch-label .circle {
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
+    background: var(--circle-bg);
+    border-radius: 50%;
+    box-shadow: var(--circle-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--circle-transition);
+    position: absolute;
+    left: var(--switch-offset);
+    z-index: 1;
+}
+
+/* Ajoutez ce style pour l'effet de ligne */
+.switch-label .slider::before {
+    content: "";
+    position: absolute;
+    width: var(--effect-width);
+    height: var(--effect-height);
+    left: calc(var(--switch-offset) + (var(--effect-width) / 2));
+    background: var(--effect-bg);
+    border-radius: var(--effect-border-radius);
+    transition: var(--effect-transition);
+}
+
+/* Définition des styles pour l'interrupteur lorsque coché */
+.switch-label input:checked + .switch .slider {
+    background: var(--switch-checked-bg);
+}
+
+.switch-label input:checked + .switch .circle {
+    left: calc(100% - var(--circle-diameter) - var(--switch-offset));
+    box-shadow: var(--circle-checked-shadow);
+}
+
+.switch-label input:checked + .switch::before {
+    left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
+}
     </style>
 </head>
 <body>
