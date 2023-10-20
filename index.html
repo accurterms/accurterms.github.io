@@ -76,34 +76,70 @@
     <div id="terms-content"></div>
     <a id="youtube-button" href="https://www.youtube.com/watch?v=ipSqka9OD1Y&pp=ygUMZmluYWxseSBtZW1l" target="_blank">✨ Prize</a>
 
-    <script>
-        const termsContent = document.getElementById("terms-content");
-        const totalCharacters = 9999999;
-        const chapters = 3000;
-        const charactersPerChapter = totalCharacters / chapters;
+  
+   <script>
+    const termsContent = document.getElementById("terms-content");
+    const totalCharacters = 99999;
+    const chapters = 3000;
+    const charactersPerChapter = totalCharacters / chapters;
 
-        let termsText = "";
+    const words = ["apple", "banana", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jazz", "kangaroo", "lemon", "mountain", "noodle", "ocean", "penguin", "quilt", "rabbit", "sunshine", "tiger", "umbrella", "violin", "waterfall", "xylophone", "zebra", "airplane", "butterfly", "carrot", "dolphin", "elephant", "fox", "giraffe", "hamburger", "igloo", "jellyfish", "koala", "lighthouse", "moon", "narwhal", "octopus", "panda", "quokka", "raccoon", "squirrel", "turtle", "unicorn", "volcano", "whale", "xylophone", "yacht", "zeppelin", "ant", "bark", "chocolate", "daisy", "eagle", "firefly", "grape", "hamster", "iguana", "jacket", "kiwi", "leopard", "mango", "nightingale", "owl", "piano", "quail", "rhinoceros", "snake", "toucan", "umbrella", "vulture", "walrus", "xylophone", "yak", "zebra", "apricot", "blueberry", "cactus", "dandelion", "eucalyptus", "flamingo", "grapefruit", "hedgehog", "iris", "jackal", "kiwi", "lemur", "magnolia", "nightshade", "otter", "palm", "quince", "rose", "starfish", "tulip", "urchin", "violet", "wisteria", "xenon", "yam", "zeppelin"];
+    const actions = ["abandon", "accept", "achieve", "acknowledge", "act", "adapt", "add", "address", "adjust", "admire", "advise", "affirm", "agitate", "align", "allow", "announce", "apologize", "appreciate", "approve", "arrange", "ascend", "ask", "assemble", "assess", "assign", "assume", "attempt", "attract", "bake", "balance", "behave", "believe", "breathe", "build", "calculate", "carry", "celebrate", "change", "choose", "claim", "clarify", "classify", "clean", "communicate", "compare", "compete", "complain", "complete", "concentrate", "condemn", "confess", "connect", "consider", "construct", "control", "cooperate", "create", "criticize", "dance", "decide", "decorate", "defend", "delay", "deliver", "demonstrate", "depend", "describe", "design", "destroy", "detect", "develop", "disagree", "disappear", "discover", "discuss", "distribute", "dive", "dream", "earn", "encourage", "end", "enjoy", "enter", "establish", "estimate", "evaluate", "examine", "exchange", "exist", "expand", "experience", "explain", "explore", "express", "extend", "face", "fail", "fear", "feed", "feel", "fight", "find", "finish", "fix", "focus", "follow", "forgive", "form", "fulfill", "gather", "generate", "give", "glow", "grasp", "grow", "handle", "happen", "hear", "help", "hide", "hinder", "hold", "identify", "imagine", "improve", "include", "influence", "inform", "initiate", "inquire", "insist", "inspire", "invent", "investigate", "invite", "join", "judge", "jump", "justify", "keep", "kiss", "knock", "know", "laugh", "learn", "leave", "lift", "listen", "live", "love", "maintain", "manage", "manifest", "march", "matter", "measure", "mediate", "meet", "mend", "mention", "merge", "mind", "miss", "mix", "motivate", "move", "negotiate", "notice", "nurture", "obey", "observe", "obtain", "operate", "organize", "overcome", "own", "participate", "pass", "pay", "perform", "plan", "play", "possess", "prepare", "present", "prevent", "produce", "progress", "promise", "protect", "provide", "pursue", "question", "reach", "realize", "receive", "recognize", "record", "reduce", "reflect", "refuse", "regulate", "rejoice", "relate", "release", "remember", "remove", "repair", "replace", "request", "resolve", "respond", "restore", "retrieve", "reveal", "rid", "run", "satisfy", "save", "say", "see", "seek", "select", "sell", "serve", "settle", "share", "shine", "show", "sing", "sit", "sleep", "smile", "solve", "speak", "start", "stay", "stimulate", "stop", "strive", "study", "submit", "succeed", "suffer", "suggest", "support", "surprise", "survive", "talk", "teach", "tell", "test", "think", "touch", "train", "transform", "translate", "travel", "treat", "trust", "understand", "unite", "use", "value", "visit", "wait", "walk", "watch", "welcome", "win", "work", "worry", "write"];
+    const persons = ["I", "You", "He", "She", "It", "We", "They"];
+    const whose = ["My", "Your", "His", "Her", "Our", "Their"];
 
-        for (let i = 1; i <= chapters; i++) {
-            const chapterTitle = `Chapter ${i}`;
-            const chapterContent = generateRandomText(charactersPerChapter);
-            termsText += `<h2>${chapterTitle}</h2>`;
-            termsText += `<p>${chapterContent}</p>`;
-        }
+    let termsText = "";
 
-        termsContent.innerHTML = termsText;
+    for (let i = 1; i <= chapters; i++) {
+        const chapterTitle = `Chapter ${i}`;
+        const chapterContent = generateRandomText(charactersPerChapter, words, actions, persons, whose, i);
+        termsText += `<h2>${chapterTitle}</h2>`;
+        termsText += `<p>${chapterContent}</p>`;
+    }
 
-        function generateRandomText(charCount) {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ';
-            let text = '';
+    termsContent.innerHTML = termsText;
 
-            for (let i = 0; i < charCount; i++) {
-                const randomIndex = Math.floor(Math.random() * characters.length);
-                text += characters.charAt(randomIndex);
+    function generateRandomText(charCount, words, actions, persons, whose, chapterNumber) {
+        let text = 'You agree to the following: ';
+
+        for (let i = 0; i < charCount; i++) {
+            // Phrases modèles
+            const templatePhrases = [
+                "[Person] will [action] [whose] [word],",
+                "You will [action] [whose] [word],",
+                "[Person] have a [word],",
+                "[Person] [action] this,"
+            ];
+
+            // Sélection aléatoire d'une phrase modèle
+            const randomTemplate = templatePhrases[Math.floor(Math.random() * templatePhrases.length)];
+
+            // Remplacement des espaces réservés par des éléments aléatoires de vos listes
+            const replacedText = randomTemplate
+                .replace("[Person]", persons[Math.floor(Math.random() * persons.length)])
+                .replace("[action]", actions[Math.floor(Math.random() * actions.length)])
+                .replace("[word]", words[Math.floor(Math.random() * words.length)])
+                .replace("[whose]", whose[Math.floor(Math.random() * whose.length)]);
+
+            // Condition pour la couleur multicolore
+            if (chapterNumber % 10 === 0) {
+                text += `<span style="color: ${getRandomColor()}">${replacedText}</span> `;
+            } else {
+                text += replacedText + " ";
             }
-
-            return text;
         }
-    </script>
+
+        return text;
+    }
+
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
 </body>
 </html>
