@@ -23,7 +23,7 @@
         }
 
         #terms-content {
-            margin: 80px auto 20px; /* La marge supérieure de #terms-content est ajustée pour éviter que le contenu soit masqué par l'en-tête */
+            margin: 80px auto 20px;
             width: 80%;
             padding: 20px;
         }
@@ -47,98 +47,77 @@
             bottom: 0;
             left: 0;
         }
-        #youtube-button {
+
+        .navbar {
             background-color: rgb(0, 0, 0);
             color: rgb(255, 255, 255);
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin-left: 45%;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            text-decoration: none;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            position: fixed; /* Fixez la barre de navigation */
+            z-index: 100; /* Assurez-vous que la barre de navigation est au-dessus du reste du contenu */
         }
 
-        /* Ajoutez ce style pour l'interrupteur (checkbox) */
-.switch-label {
-    display: inline-block;
-    margin-left: 10px; /* Ajustez la marge comme souhaité */
-}
+        .navbar a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            margin: 10px;
+        }
 
-.switch-label .switch {
-    display: inline-block;
-    width: 30px; /* Ajustez la largeur comme souhaité */
-    height: 15px; /* Ajustez la hauteur comme souhaité */
-    position: relative;
-    cursor: pointer;
-}
+        .accept-button {
+            background-color: black;
+            border: none;
+            color: white;
+            font-family: "Cascadia Code", monospace;
+            position: fixed; /* Fixez le bouton de commutation */
+            top: 10px; /* Ajustez la position verticale au besoin */
+            right: 10px; /* Ajustez la position horizontale au besoin */
+            z-index: 101; /* Assurez-vous que le bouton de commutation est au-dessus de la barre de navigation */
+        }
 
-.switch-label .slider {
-    width: 100%;
-    height: 100%;
-    background: var(--switch-bg);
-    border-radius: 999px;
-    position: relative;
-    transition: var(--switch-transition);
-}
-
-.switch-label .circle {
-    width: var(--circle-diameter);
-    height: var(--circle-diameter);
-    background: var(--circle-bg);
-    border-radius: 50%;
-    box-shadow: var(--circle-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--circle-transition);
-    position: absolute;
-    left: var(--switch-offset);
-    z-index: 1;
-}
-
-/* Ajoutez ce style pour l'effet de ligne */
-.switch-label .slider::before {
-    content: "";
-    position: absolute;
-    width: var(--effect-width);
-    height: var(--effect-height);
-    left: calc(var(--switch-offset) + (var(--effect-width) / 2));
-    background: var(--effect-bg);
-    border-radius: var(--effect-border-radius);
-    transition: var(--effect-transition);
-}
-
-/* Définition des styles pour l'interrupteur lorsque coché */
-.switch-label input:checked + .switch .slider {
-    background: var(--switch-checked-bg);
-}
-
-.switch-label input:checked + .switch .circle {
-    left: calc(100% - var(--circle-diameter) - var(--switch-offset));
-    box-shadow: var(--circle-checked-shadow);
-}
-
-.switch-label input:checked + .switch::before {
-    left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
-}
+        /* Style pour le conteneur des étiquettes de commutation */
+        
     </style>
 </head>
 <body>
     <div id="header">
-        <h1>⊳ Terms of Service by @AccurTerms ⊲</h1>
+        <h1>⊳    Terms of Service ⊲</h1>
     </div>
     <div id="terms-content"></div>
-    <button id="prize-button">Prize</button>
-   
+    <div class="switch-container">
+        <label class="switch-label">
+            <input type="checkbox">
+            <div class="switch">
+                <div class="circle">
+                    <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <!-- ... (votre icône "cross") ... -->
+                    </svg>
+                    <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 24 24" y="0" x="0" height="10" width="10" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <!-- ... (votre icône "checkmark") ... -->
+                    </svg>
+                </div>
+            </div>
+        </label>
+        <button class="accept-button">Acceptez-vous les règles ?</button>
+    </div>
+    
+    <div class="navbar">
+        <a href="#">Go to our discord server to post funny generated text  -></a>
+        <a href="./discord.html">Discord Server</a>
+</div>
 
+    
     <script>
         const termsContent = document.getElementById("terms-content");
         const totalCharacters = 9999;
         const chapters = 300;
         const charactersPerChapter = totalCharacters / chapters;
 
-      
+     
+       
+
 
        
         const words = ["apple", "banana", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jazz", "kangaroo", "lemon", "mountain", "noodle", "ocean", "penguin", "quilt", "rabbit", "sunshine", "tiger", "umbrella", "violin", "waterfall", "xylophone", "zebra", "airplane", "butterfly", "carrot", "dolphin", "elephant", "fox", "giraffe", "hamburger", "igloo", "jellyfish", "koala", "lighthouse", "moon", "narwhal", "octopus", "panda", "quokka", "raccoon", "squirrel", "turtle", "unicorn", "volcano", "whale", "xylophone", "yacht", "zeppelin", "ant", "bark", "chocolate", "daisy", "eagle", "firefly", "grape", "hamster", "iguana", "jacket", "kiwi", "leopard", "mango", "nightingale", "owl", "piano", "quail", "rhinoceros", "snake", "toucan", "umbrella", "vulture", "walrus", "xylophone", "yak", "zebra", "apricot", "blueberry", "cactus", "dandelion", "eucalyptus", "flamingo", "grapefruit", "hedgehog", "iris", "jackal", "kiwi", "lemur", "magnolia", "nightshade", "otter", "palm", "quince", "rose", "starfish", "tulip", "urchin", "violet", "wisteria", "xenon", "yam", "zeppelin"];
@@ -156,19 +135,6 @@ const actions = ["abandon", "accept", "achieve", "acknowledge", "act", "adapt", 
     termsText += `<p>${chapterContent}</p>`;
     
     // Ajoutez un interrupteur (checkbox) pour chaque chapitre
-    termsText += `<label class="switch-label">
-                <input type="checkbox">
-                <div class="switch">
-                    <div class="circle">
-                        <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <!-- ... (votre icône "cross") ... -->
-                        </svg>
-                        <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 24 24" y="0" x="0" height="10" width="10" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <!-- ... (votre icône "checkmark") ... -->
-                        </svg>
-                    </div>
-                </div>
-            </label>`;
         }
 
 termsContent.innerHTML = termsText;
@@ -203,45 +169,7 @@ termsContent.innerHTML = termsText;
 
           // Sélectionnez toutes les cases à cocher
          // Sélectionnez toutes les cases à cocher
-         let startTime;
-        let endTime;
-        let checkedCount = 0;
-
-        // Sélectionnez toutes les cases à cocher
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        const prizeButton = document.getElementById("prize-button");
-
-        // Ajoutez un gestionnaire d'événements pour chaque case à cocher
-        checkboxes.forEach((checkbox, index) => {
-            checkbox.addEventListener('change', (event) => {
-                const chapterNumber = index + 1;
-                if (event.target.checked) {
-                    console.log(`Checkbox cochée dans le chapitre ${chapterNumber}`);
-                    checkedCount++;
-                } else {
-                    console.log(`Checkbox décochée dans le chapitre ${chapterNumber}`);
-                    checkedCount--;
-                }
-            });
-        });
-
-        // Gestionnaire d'événements pour le bouton "Prize"
-        prizeButton.addEventListener('click', () => {
-            if (checkedCount === chapters) {
-                endTime = new Date();
-                const timeElapsed = (endTime - startTime) / 1000; // en secondes
-                alert(`Félicitations ! Vous avez gagné.\nTemps pris : ${timeElapsed} secondes\nNombre de cases cochées : ${checkedCount}`);
-            } else {
-                const timeElapsed = (endTime - startTime) / 1000; // en secondes
-                const tryAgain = confirm('Vous n\'avez pas réussi. Voulez-vous réessayer ? ,' + "\nNombre de cases cochées :"+ ` ${checkedCount}`);
-                if (tryAgain) {
-                    location.reload(); // Recharge la page
-                }
-            }
-        });
-
-        // Commencez à mesurer le temps dès que la page est chargée
-        startTime = new Date();
+       
     </script>
     
     
