@@ -130,10 +130,7 @@
     </div>
     <div id="terms-content"></div>
     <button id="prize-button">Prize</button>
-    <div id="image-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(101, 98, 98, 0.8); padding: 20px; border-radius: 10px;">
-        <!-- L'emplacement de l'image sélectionnée -->
-        <img id="popup-image" src="" alt="Random Image" style="max-width: 100%; max-height: 100%; display: block; margin: 0 auto;" class="small-image">
-    </div>
+   
 
     <script>
         const termsContent = document.getElementById("terms-content");
@@ -141,46 +138,7 @@
         const chapters = 300;
         const charactersPerChapter = totalCharacters / chapters;
 
-        function showImagePopup() {
-            const popup = document.getElementById("image-popup");
-            const popupImage = document.getElementById("popup-image");
-
-               const imageUrls = [
-                "https://media.discordapp.net/attachments/1159460239926640681/1165026487641047120/kIsLdx1.png?ex=65455a77&is=6532e577&hm=00322f9291773ab2885becb74ed7c5dd0ee6d90b38d68217551447fa75300b3f&=&width=800&height=200",
-                "https://media.discordapp.net/attachments/1159460239926640681/1165023554576850955/HHXhcEp.png?ex=654557bc&is=6532e2bc&hm=bee996906239342039f9993dfafd9b3bd14a64d9b9ccd97e26af26001fd8ea9b&=&width=800&height=200"
-               ]
-
-
-         
-            const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
-
-            // Chargez l'image sélectionnée
-            popupImage.src = randomImageUrl;
-
-            // Positionnez la popup à un endroit aléatoire sur la page
-            const pageWidth = window.innerWidth;
-            const pageHeight = window.innerHeight;
-            const popupWidth = popup.clientWidth;
-            const popupHeight = popup.clientHeight;
-
-            const randomLeft = Math.floor(Math.random() * (pageWidth - popupWidth));
-            const randomTop = Math.floor(Math.random() * (pageHeight - popupHeight));
-
-            popup.style.left = randomLeft + "px";
-            popup.style.top = randomTop + "px";
-
-            // Affichez la popup
-            popup.style.display = "block";
-
-            // Attendez qu'un clic soit effectué sur l'image pour la fermer
-            popupImage.onclick = function() {
-                popup.style.display = "none";
-            };
-        }
-
-        // Affichez la popup d'image à un emplacement aléatoire toutes les 5 secondes
-        setInterval(showImagePopup, 5000);
-
+      
 
        
         const words = ["apple", "banana", "cat", "dog", "elephant", "flower", "guitar", "house", "island", "jazz", "kangaroo", "lemon", "mountain", "noodle", "ocean", "penguin", "quilt", "rabbit", "sunshine", "tiger", "umbrella", "violin", "waterfall", "xylophone", "zebra", "airplane", "butterfly", "carrot", "dolphin", "elephant", "fox", "giraffe", "hamburger", "igloo", "jellyfish", "koala", "lighthouse", "moon", "narwhal", "octopus", "panda", "quokka", "raccoon", "squirrel", "turtle", "unicorn", "volcano", "whale", "xylophone", "yacht", "zeppelin", "ant", "bark", "chocolate", "daisy", "eagle", "firefly", "grape", "hamster", "iguana", "jacket", "kiwi", "leopard", "mango", "nightingale", "owl", "piano", "quail", "rhinoceros", "snake", "toucan", "umbrella", "vulture", "walrus", "xylophone", "yak", "zebra", "apricot", "blueberry", "cactus", "dandelion", "eucalyptus", "flamingo", "grapefruit", "hedgehog", "iris", "jackal", "kiwi", "lemur", "magnolia", "nightshade", "otter", "palm", "quince", "rose", "starfish", "tulip", "urchin", "violet", "wisteria", "xenon", "yam", "zeppelin"];
